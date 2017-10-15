@@ -45,3 +45,31 @@ li {
 	width: 150px;
 	border-radius: 50%;
 }
+
+.popular-rank {
+	font-size: 20px;
+	margin: 10px;
+}
+
+.nav {
+	display: flex;
+}
+
+.active {
+	font-weight: bold;
+}
+
+.nav li {
+	margin-right: 15px;
+}
+
+a {
+	text-decoration: none;
+	color: #d0021b;
+}
+
+.home-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
