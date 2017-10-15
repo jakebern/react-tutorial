@@ -1,36 +1,7 @@
 var React = require('react');
 var Link = require('react-router-dom').Link;
 var PropTypes = require('prop-types');
-
-
-function PlayerPreview(props) {
-	return (
-		<div>
-			<div className='column'>
-				<img
-					className = 'avatar'
-					src = {props.avatar}
-					alt = {'Avatar for ' + props.username}
-				/>
-				<h2 className = 'username'>@{props.user}</h2>
-			</div>
-			<button 
-				className = 'reset'
-				//Using bind just so can pass a specific function to tell which
-				//Player to reset
-				onClick = {props.onReset.bind(null, props.id)}>
-				Reset 
-		</button>
-		</div>
-	)
-}
-
-PlayerPreview.propTypes = {
-	avatar: PropTypes.string.isRequired,
-	username: PropTypes.string.isRequired,
-	onReset: PropTypes.func.isRequired,
-	id: PropTypes.string.isRequired
-}
+var PlayerPreview = require('./PlayerPreview');
 
 //only create new file for new component if the component will
 //be reused by components outside of this file
@@ -159,10 +130,15 @@ class Battle extends React.Component {
 					{playerOneImage !==null && 
 						<PlayerPreview
 							avatar = {playerOneImage}
-							username = {playerOneName}
-							onReset = {this.handleReset}
-							id = 'playerOne'
-						/>
+							username = {playerOneName}>
+							<button 
+									className = 'reset'
+									//Using bind just so can pass a specific function to tell which
+									//Player to reset
+									onClick = {this.handleReset.bind(null, 'playerOne')}>
+									Reset 
+							</button>
+						</PlayerPreview>
 					}
 					{!playerTwoName && 
 						<PlayerInput
@@ -174,10 +150,15 @@ class Battle extends React.Component {
 					{playerTwoImage !==null && 
 						<PlayerPreview
 							avatar = {playerTwoImage}
-							username = {playerTwoName}
-							onReset = {this.handleReset}
-							id = 'playerTwo'
-						/>
+							username = {playerTwoName}>
+							<button 
+									className = 'reset'
+									//Using bind just so can pass a specific function to tell which
+									//Player to reset
+									onClick = {this.handleReset.bind(null, 'playerTwo')}>
+									Reset 
+							</button>
+						</PlayerPreview>
 					}
 				</div>
 				{playerOneImage && playerTwoImage &&
